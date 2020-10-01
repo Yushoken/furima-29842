@@ -22,7 +22,7 @@
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
-| name                | text       | null: false |
+| name                | string     | null: false |
 | info                | text       | null: false |
 | price               | integer    | null: false |
 | sales_status        | integer    | null: false |
