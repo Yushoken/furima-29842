@@ -30,7 +30,7 @@
 | prefecture_id          | integer    | null: false |
 | scheduled_delivery_id  | integer    | null: false |
 | category_id            | integer    | null: false |
-| user                   | references | null: false                    |
+| user                   | references | null: false |
 
 
 ### Association
@@ -42,8 +42,8 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user   | references | null: false                    |
-| item   | references | null: false                    |
+| user   | references | null: false, foreign_key       |
+| item   | references | null: false, foreign_key       |
 
 ### Association
 
