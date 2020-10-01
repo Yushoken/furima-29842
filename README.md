@@ -25,11 +25,11 @@
 | name                | text    | null: false |
 | info                | text    | null: false |
 | price               | integer | null: false |
-| sales_status        | text    | null: false |
-| shipping_fee_status | text    | null: false |
-| prefecture          | text    | null: false |
-| scheduled_delivery  | text    | null: false |
-| category            | text    | null: false |
+| sales_status        | integer | null: false |
+| shipping_fee_status | integer | null: false |
+| prefecture          | integer | null: false |
+| scheduled_delivery  | integer | null: false |
+| category            | integer | null: false |
 
 
 ### Association
