@@ -47,8 +47,8 @@
 
 ### Association
 
-- has_one : user
-- has_one : item
+- belongs_to : user
+- belongs_to : item
 - has_one : address
 
 ## addresses テーブル
