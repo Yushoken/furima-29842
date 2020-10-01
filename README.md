@@ -15,44 +15,52 @@
 
 ### Association
 
-- has_many :items
-- has_one : buys
+- has_many :item
+- has_one : buy
 
 ## items テーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| image  | string | null: false |
-| name   | string | null: false |
-| info   | string | null: false |
-| price  | string | null: false |
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| name                | text    | null: false |
+| info                | text    | null: false |
+| price               | integer | null: false |
+| sales_status        | text    | null: false |
+| shipping_fee_status | text    | null: false |
+| prefecture          | text    | null: false |
+| scheduled_delivery  | text    | null: false |
+| category            | text    | null: false |
+
 
 ### Association
 
-- belongs_to :users
-- has_one : buys
+- belongs_to :user
+- has_one : buy
 
 ## buys テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| token  | string     | null: false                    |
+| user   | references | null: false                    |
+| item   | references | null: false                    |
 
 ### Association
 
-- has_one : users
-- has_one : items
-- has_one : buyers
+- has_one : user
+- has_one : item
+- has_one : address
 
-## buyers テーブル
+## addresses テーブル
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
 | postal_code  | string     | null: false |
+| prefecture   | string     | null: false |
 | city         | string     | null: false |
 | addresses    | string     | null: false |
+| building     | string     | null: false |
 | phone_number | string     | null: false |
 
 ### Association
 
-- has_one : buys
+- belongs_to : buy
