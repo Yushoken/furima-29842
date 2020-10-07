@@ -53,6 +53,11 @@ RSpec.describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
+      it 'emailに@が含まれていないと登録できない' do
+        @user.email = 'aaagmail'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it '重複したemailが存在する場合は登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)
@@ -95,6 +100,26 @@ RSpec.describe User do
         @user.last_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+      it 'first_nameが全角でないと登録できない' do
+        @user.first_name = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name Full-width characters")
+      end
+      it 'last_nameが全角でないと登録できない' do
+        @user.last_name = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name Full-width characters")
+      end
+      it 'first_name_kanaが全角カタカナでないと登録できない' do
+        @user.first_name_kana = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana Full-width kana characters")
+      end
+      it 'last_name_kanaが全角カタカナでないと登録できない' do
+        @user.last_name_kana = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana Full-width kana characters")
       end
       it 'birth_dateが空だと登録できない' do
         @user.birth_date = ''
