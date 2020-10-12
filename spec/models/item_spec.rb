@@ -8,31 +8,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品情報入力' do
     context '商品情報登録がうまくいくとき' do
-      it '画像必須' do
-        expect(@item).to be_valid
-      end
-      it '商品名必須' do
-        expect(@item).to be_valid
-      end
-      it '商品の説明必須' do
-        expect(@item).to be_valid
-      end
-      it 'カテゴリ必須' do
-        expect(@item).to be_valid
-      end
-      it '商品の状態必須' do
-        expect(@item).to be_valid
-      end
-      it '配送料の負担必須' do
-        expect(@item).to be_valid
-      end
-      it '発送元の地域必須' do
-        expect(@item).to be_valid
-      end
-      it '発送までの日数必須' do
-        expect(@item).to be_valid
-      end
-      it '販売価格必須' do
+      it '画像、商品名、商品の説明、カテゴリ、商品の状態、配送料の負担、発送元の地域、発送までの日数、販売価格必須' do
         expect(@item).to be_valid
       end
     end
