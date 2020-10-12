@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
   def create
     # 3商品が保存できた時とできなかった時で条件分岐が必要
     @item = Item.create(item_params)
-    if @item.save
+    if @item.valid?
+      @item.save
       redirect_to :root
     else
       render 'new'

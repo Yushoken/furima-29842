@@ -8,9 +8,8 @@
     <%# １新規で保存するときのform_withの書き方に変更しましょう %>
     <%= form_with model: @item, id: 'new_item', class: 'new_item', local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+  
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
     <div class="img-upload">
