@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   def index
-    @nickname = current_user.nickname
+    #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
     @item = Item.all
   end
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def create
     # 3商品が保存できた時とできなかった時で条件分岐が必要
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.valid?
       @item.save
       redirect_to :root
