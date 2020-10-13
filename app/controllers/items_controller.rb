@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
   def index
     #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
-    @item = Item.all
+
+    @item = Item.includes(:user).order("created_at DESC")
   end
 
   def new
