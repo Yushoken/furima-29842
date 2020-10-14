@@ -23,6 +23,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    # データーベースから必要なItem情報を取得してくる
+    @item = Item.find(params[:id])
+  end
+
+
+
 
   private
   def item_params
