@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:edit, :show, :update]
   def index
     #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
@@ -24,21 +25,18 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # データーベースから必要なItem情報を取得してくる
-    @item = Item.find(params[:id])
   end
 
-  def edit
-    @item = Item.find(params[:id])
+  def edit  
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to :item
     else
       render :edit
     end
+
 
   end
 
@@ -53,6 +51,10 @@ class ItemsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
