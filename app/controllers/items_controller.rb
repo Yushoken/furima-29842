@@ -4,13 +4,11 @@ class ItemsController < ApplicationController
   def index
     #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
-
     @item = Item.includes(:user).order("created_at DESC")
   end
 
   def new
-    # １インスタンス変数を定義
-    @item = Item.new
+    @item = Item.new # １インスタンス変数を定義
   end
 
   def create
