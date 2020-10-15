@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show, :update]
+  before_action :set_item, only: [:edit, :show, :update,:destroy]
   def index
     #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
@@ -8,7 +8,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new # １インスタンス変数を定義
+    # １インスタンス変数を定義
+    @item = Item.new
   end
 
   def create
@@ -29,6 +30,16 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    if @item.destroy
+      redirect_to :root
+    else
+      render :edit
+    end
+  end
+
+
 
   private
   def item_params
