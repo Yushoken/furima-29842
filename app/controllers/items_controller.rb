@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update,:destroy]
+  before_action :authenticate_user!
   def index
     #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
@@ -32,10 +33,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      @item.destroy
       redirect_to :root
-    else
-      render :edit
     end
   end
 
