@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show, :update]
+  before_action :set_item, only: [:edit, :show, :update,:destroy]
+  before_action :authenticate_user!
   def index
     #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
-
     @item = Item.includes(:user).order("created_at DESC")
   end
 
@@ -31,6 +31,17 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      @item.destroy
+      redirect_to :root
+    else
+      render :show
+    end
+  end
+
+
 
   private
   def item_params
