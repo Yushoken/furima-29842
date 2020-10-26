@@ -9,10 +9,6 @@ class BuysController < ApplicationController
     @user_buy = UserBuy.new 
   end
 
-  def new
-    @item = Item.find(params[:id])
-  end
-
   def create
     @user_buy = UserBuy.new(buy_params)
     if @user_buy.valid?
