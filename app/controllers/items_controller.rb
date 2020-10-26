@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show, :update,:destroy]
-  before_action :authenticate_user!
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
-    #@nickname = current_user.nickname
     # 2全ての商品のレコードをインスタンス変数に代入
-    @item = Item.includes(:user).order("created_at DESC")
+    @item = Item.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -22,6 +21,12 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   def update
@@ -41,17 +46,14 @@ class ItemsController < ApplicationController
     end
   end
 
-
-
   private
+
   def item_params
     params.require(:item).permit(:name, :info, :price, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :category_id, :content, :image).merge(user_id: current_user.id)
   end
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
 
   def set_item
