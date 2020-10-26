@@ -57,6 +57,11 @@ RSpec.describe UserBuy, type: :model do
         @user_buy.valid?
         expect(@user_buy.errors.full_messages).to include('Prefecture Select')
       end
+      it 'prefecture_idが１だと登録できない' do
+        @user_buy.prefecture_id = 1
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages).to include('Prefecture Select')
+      end
     end
   end
 end
