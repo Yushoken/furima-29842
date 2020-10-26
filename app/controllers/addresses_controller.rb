@@ -3,4 +3,3 @@ class AddressesController < ApplicationController
     @addresses = Address.all
   end
 end
- 
